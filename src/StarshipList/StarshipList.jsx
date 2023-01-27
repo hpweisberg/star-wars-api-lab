@@ -1,3 +1,5 @@
+import styles from './StarshipList.module.css'
+
 // import useState:
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -21,24 +23,27 @@ const StarshipList = () => {
   
   
   return ( 
-    <>
-      <h3>STAR WARS STARSHIPS</h3>
+    <div className='centerEverything'>
+      <nav className={styles.navbar}>
+        <h3 className={styles.starshiph3}>STAR WARS STARSHIPS</h3>
+      </nav>
+        
       {starshipList.length ?
-      <>
+      <div className={styles.cardContainer}>
       {starshipList.map(starship =>
-        <div key={starship.name}>
-          <Link to='/starship' state=
+        <div className={styles.starshipCard} key={starship.name}>
+          <Link className={styles.starshipCard} to='/starship' state=
           {{starship}} >{starship.name}
           </Link>
         </div>
         )}
-      </>
+      </div>
       :
       <>
         <div>Loading your vehchials...</div>
       </>
   }
-    </>
+    </div>
   )
 }
 
