@@ -1,4 +1,4 @@
-// import styles from './StarshipDetial.module.css'
+import styles from './StarshipDetail.module.css'
 
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
@@ -11,18 +11,24 @@ const StarshipDetails = () => {
   useEffect(() => {
     const fetchDetails = async () => {
       const starshipData = await
-      getDetails(location.state.starship.url)
+        getDetails(location.state.starship.url)
       setStarshipDetails(starshipData)
     }
     fetchDetails()
   }, [location.state.starship.url])
 
-  return ( 
+  return (
     <>
-    <h3>STARSHIP DETAILS</h3>
-      <div>NAME: {starshipDetails.name}</div>
-      <div>MODEL: {starshipDetails.model}</div>
-      <Link to='/'>RETURN</Link>
+      <nav className={styles.navbar}>
+        <h3>STARSHIP DETAILS</h3>
+      </nav>
+      <div className={styles.centerEverything}>
+        <div className={styles.starshipCard}>
+          <div>NAME: {starshipDetails.name}</div>
+          <div>MODEL: {starshipDetails.model}</div>
+          <Link to='/'>RETURN</Link>
+        </div>
+      </div>
     </>
   )
 }
